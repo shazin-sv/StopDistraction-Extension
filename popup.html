@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Stop Distraction</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="home">Home</button>
+    <button class="tab-btn" data-tab="stats">Stats</button>
+    <button class="tab-btn" data-tab="settings">Settings</button>
+  </nav>
+
+  <!-- HOME TAB -->
+  <div id="home" class="tab-content active">
+    <div class="header-summary">
+      <img src="icon.png" alt="Logo" class="logo"
+        style="width: 32px; height: 32px; border-radius: 8px; margin-bottom: 8px;">
+      <div id="distraction-score-circle" class="score-circle">
+        <span id="score-val">0</span>
+        <span class="label">Bad Score</span>
+      </div>
+      <div class="message-box">
+        <p id="motivational-msg">Stay focused!</p>
+      </div>
+    </div>
+
+    <div class="card glass-panel">
+      <h3>Total Distractions</h3>
+      <div class="stats-row">
+        <div class="stat">
+          <span class="label">YouTube</span>
+          <span class="val" id="home-yt-count">0</span>
+          <span class="sub" id="home-yt-time">0m</span>
+        </div>
+        <div class="stat">
+          <span class="label">Instagram</span>
+          <span class="val" id="home-ig-count">0</span>
+          <span class="sub" id="home-ig-time">0m</span>
+        </div>
+      </div>
+      <div class="progress-bar-container">
+        <div class="label-row">
+          <span>Distraction Limit</span>
+          <span id="limit-progress-text">0 / 30m</span>
+        </div>
+        <div class="progress-bar">
+          <div class="fill" id="limit-fill" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <button id="reset-session-btn" class="action-btn">Reset Session</button>
+  </div>
+
+  <!-- STATS TAB -->
+  <div id="stats" class="tab-content">
+    <div class="card glass-panel">
+      <h3>Hourly Activity</h3>
+      <div class="chart-container" id="hourly-chart">
+        <!-- Bars will be injected here -->
+      </div>
+      <div class="chart-labels">
+        <span>12AM</span>
+        <span>6AM</span>
+        <span>12PM</span>
+        <span>6PM</span>
+      </div>
+    </div>
+
+    <div class="card glass-panel">
+      <h3>Yesterday vs Today</h3>
+      <div class="comparison-row">
+        <div class="day-col">
+          <span class="day-label">Yesterday</span>
+          <span class="day-val" id="yesterday-total-time">0m</span>
+        </div>
+        <div class="vs-divider">vs</div>
+        <div class="day-col">
+          <span class="day-label">Today</span>
+          <span class="day-val" id="today-total-time">0m</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card glass-panel">
+      <h3>Insights</h3>
+      <ul class="insights-list">
+        <li>Most distracted hour: <strong id="peak-hour">--</strong></li>
+        <li>Estimated time wasted: <strong id="wasted-time">0m</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SETTINGS TAB -->
+  <div id="settings" class="tab-content">
+    <div class="setting-group">
+      <label>Daily Limit (minutes)</label>
+      <input type="number" id="setting-limit" min="0" max="600">
+    </div>
+
+    <div class="setting-group">
+      <label>Alert Interval (videos)</label>
+      <input type="number" id="setting-alert" min="0" max="100">
+    </div>
+
+    <div class="setting-row">
+      <span>Use Blur Shield</span>
+      <label class="switch">
+        <input type="checkbox" id="setting-blur">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting-row">
+      <span>Floating Counter</span>
+      <label class="switch">
+        <input type="checkbox" id="setting-floating">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting-row">
+      <span>Study Mode (Strict)</span>
+      <label class="switch">
+        <input type="checkbox" id="setting-mode">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="info-footer">
+      Stop Distraction v2.0
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
